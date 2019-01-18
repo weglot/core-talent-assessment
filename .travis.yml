@@ -1,0 +1,14 @@
+language: php
+php:
+  - '7.2'
+
+branches:
+  except:
+  - master
+
+install:
+  - php composer.phar install
+
+script:
+  - php talent-assessment unzip
+  - php vendor/bin/phpunit
