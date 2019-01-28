@@ -3,6 +3,7 @@
   <a href="https://weglot.com/"><img src="https://staging.weglot.com/public/images/wglogo-full.png" alt="Weglot" width="200"></a>
   <br>
   Core Talent Assessment
+  
   <br>
 </h1>
 
@@ -10,7 +11,10 @@ Hello and welcome on Weglot Talent Assessment !
 
 This PHP test will ask you to implement simple encoding algorithms and tests them with Phpunit.
 
-First, when you are ready to start the test you need to run the following command :
+
+First, you need to fork this repo and clone it on your computer.
+
+Then, when you are ready to start the test you need to run the following command :
 ```
 php talent-assessment start
 ```
@@ -24,9 +28,11 @@ To run unit tests in order to check your code :
 php vendor/bin/phpunit
 ```
 
-And finally when you've completed the talent assessment, run the following command :
+When you've completed the talent assessment, run the following command :
 ```
 php talent-assessment finish
 ```
+
+Finally, open a pull-request between our repo and your fork [here](https://github.com/weglot/core-talent-assessment/compare).
 
 Good luck !

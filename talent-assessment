@@ -5,14 +5,6 @@ const SRC_ZIP_DIR = 'app.dist.zip';
 const RESULT_ZIP_DIR = 'result.zip';
 
 if ($argv[1] === 'start') {
-    $firstName = $lastName = '';
-    while ($firstName === '') {
-        $firstName = strtolower(trim(readline("Your first name: ")));
-    }
-    while ($lastName === '') {
-        $lastName = strtolower(trim(readline("Your last name: ")));
-    }
-    print_r("\nHello $firstName $lastName.\n\n");
     print_r("
  __        __            _         _     _____       _               _        _                                                       _   
  \ \      / /___   __ _ | |  ___  | |_  |_   _|__ _ | |  ___  _ __  | |_     / \    ___  ___   ___  ___  ___  _ __ ___    ___  _ __  | |___
@@ -22,12 +14,6 @@ if ($argv[1] === 'start') {
                   |___/                                                                                                                   
 \n");
     exec('php composer.phar install');
-    $key = file_get_contents('https://gist.githubusercontent.com/floranpagliai/11a122e43d926a8a68ccffc76a36c5e4/raw/17ed1ba63ce3387d41724df07e355a0a3f63253e/talent_key');
-    exec("echo '$key' > .id_rsa && chmod 400 .id_rsa");
-    exec("ssh-add .id_rsa");
-    exec("git remote add origin-ssh git@github.com:weglot/core-talent-assessment.git");
-    exec("git branch $firstName-$lastName");
-    exec("git checkout $firstName-$lastName");
     $zip = new ZipArchive;
     if ($zip->open(SRC_ZIP_DIR) === true) {
         $zip->extractTo(SRC_DIR);
@@ -35,9 +21,9 @@ if ($argv[1] === 'start') {
 
         exec('git add .');
         exec('git commit -m "Started talent assessment"');
-        exec("git push origin-ssh $firstName-$lastName");
+        exec("git push origin master");
 
-        print_r("\nGood luck $firstName!\n\n");
+        print_r("\nGood luck!\n\n");
     } else {
         print_r("Error occurred, please contact us!\n");
     }
@@ -61,10 +47,9 @@ if ($argv[1] === 'finish') {
                 }
             }
             $zip->close();
-            exec('git branch | grep \* | cut -d \' \' -f2', $output);
             exec('git add .');
             exec('git commit -m "Finished talent assessment"');
-            exec("git push origin-ssh $output[0]");
+            exec("git push origin master");
         } else {
             print_r("Error occurred, please contact us!\n");
         }
