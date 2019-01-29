@@ -1,5 +1,6 @@
 *~
 .DS_Store
 .idea
+.id_rsa
 /app
 /vendor
