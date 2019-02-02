@@ -10,5 +10,9 @@
         "php": ">=5.3.3",
         "phpunit/phpunit": "4.8.*",
         "phpspec/prophecy": "^1.5"
+    },
+	"config": {
+        "disable-tls": true,
+        "secure-http": false
     }
 }
