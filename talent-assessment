@@ -19,6 +19,7 @@ if ($argv[1] === 'start') {
         $zip->extractTo(SRC_DIR);
         $zip->close();
 
+        exec('php composer.phar install');
         $date = (new \DateTime())->format('Y/m/d H:i:s');
         exec("echo $date > info.md");
         exec('git add .');
