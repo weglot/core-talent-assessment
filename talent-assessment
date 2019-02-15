@@ -1,10 +1,10 @@
 #!/usr/bin/env php
 <?php
+const SRC_DIR = 'app/';
+const SRC_ZIP_DIR = 'app.dist.zip';
+const RESULT_ZIP_DIR = 'result.zip';
 
 if ($argv[1] === 'start') {
-    $firstName = readline("Your first name: ");
-    $lastName = readline("Your last name: ");
-    print_r("\nHello $firstName $lastName\n\n");
     print_r("
  __        __            _         _     _____       _               _        _                                                       _   
  \ \      / /___   __ _ | |  ___  | |_  |_   _|__ _ | |  ___  _ __  | |_     / \    ___  ___   ___  ___  ___  _ __ ___    ___  _ __  | |___
@@ -14,13 +14,56 @@ if ($argv[1] === 'start') {
                   |___/                                                                                                                   
 \n");
     exec('php composer.phar install');
-    exec("git branch $firstName-$lastName");
-    exec("git checkout $firstName-$lastName");
-    exec('git add .');
-    exec('git commit -m "Started talent assessment"');
+    $zip = new ZipArchive;
+    if ($zip->open(SRC_ZIP_DIR) === true) {
+        $zip->extractTo(SRC_DIR);
+        $zip->close();
+
+        exec('php composer.phar install');
+        $date = new \DateTime();
+        $date = $date->format('Y/m/d H:i:s');
+        exec("echo $date > info.md");
+        exec('git add .');
+        exec('git commit -m "Started talent assessment"');
+        exec("git push origin master");
+
+        print_r("\nGood luck!\n\n");
+    } else {
+        print_r("Error occurred, please contact us!\n");
+    }
 }
 
 if ($argv[1] === 'finish') {
-    print_r('todo');
+    $confirmation = trim(readline("This will submit your test results, are you sure? Type 'yes' to confirm :"));
+    if (trim($confirmation) === 'yes') {
+        // Gzip app with password
+        $zip = new ZipArchive;
+        if ($zip->open(RESULT_ZIP_DIR, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+            $files = new RecursiveIteratorIterator(
+                new RecursiveDirectoryIterator(SRC_DIR),
+                RecursiveIteratorIterator::LEAVES_ONLY
+            );
+
+            foreach ($files as $name => $file) {
+                if (!$file->isDir()) {
+                    $filePath = $file->getRealPath();
+                    $zip->addFile($filePath, basename($file));
+                }
+            }
+            $zip->close();
+            exec('git add .');
+            exec('git commit -m "Finished talent assessment"');
+            exec("git push origin master");
+        } else {
+            print_r("Error occurred, please contact us!\n");
+        }
+    }
 }
 
+if ($argv[1] === 'unzip') {
+    $zip = new ZipArchive;
+    if ($zip->open(RESULT_ZIP_DIR) === true) {
+        $zip->extractTo(SRC_DIR);
+        $zip->close();
+    }
+}
