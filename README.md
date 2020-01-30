@@ -11,6 +11,11 @@ Hello and welcome on Weglot Talent Assessment !
 
 This PHP test will ask you to implement simple encoding algorithms and tests them with Phpunit.
 
+Requirements:
+* Git (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* PHP >= 5.3 (https://www.php.net/manual/en/install.php)
+* PHP Zip (https://www.php.net/manual/zip.installation.php)
+
 
 First, you need to fork this repo and clone it on your computer.
 
