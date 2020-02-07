@@ -1,5 +1,6 @@
 <?php
 
+include_once("./EncodingAlgorithm.php");
 /**
  * Class SubstitutionEncodingAlgorithm
  *  http://www.writephponline.com/
@@ -35,7 +36,8 @@ class SubstitutionEncodingAlgorithm implements EncodingAlgorithm
         /**
          * @TODO: Implement it
          */
-
-        return '';
     }
 }
+// $offset = 5;
+//$objet = new SubstitutionEncodingAlgorithm(["ab"]);
+//var_dump($objet->encode("ab"));

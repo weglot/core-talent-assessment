@@ -38,7 +38,13 @@ class CompositeEncodingAlgorithm implements EncodingAlgorithm
         /**
          * @TODO: Implement it
          */
+        
+        // return '';
 
-        return '';
+        $this->algorithms[0].encode($text);
+        $this->algorithms[1].encode($text);
+        
+        
+    
     }
 }
