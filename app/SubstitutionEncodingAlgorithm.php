@@ -38,4 +38,29 @@ class SubstitutionEncodingAlgorithm implements EncodingAlgorithm
 
         return '';
     }
+
+    public function changeLetter($letter, $arrayImposed, $isLowerCase){
+        for ($i = 0; $i < count($arrayImposed); $i++) {
+            if (in_array($letter, $arrayImposed)) {
+                $positionOfMatch = array_search(($letter), $arrayImposed);
+                if ( $positionOfMatch %2 == 1){
+                    if($isLowerCase){
+                        return $arrayImposed[$positionOfMatch-1];
+                    }
+                    return strtoupper($arrayImposed[$positionOfMatch-1]);
+                } else {
+                    if($isLowerCase){
+                        return $arrayImposed[$positionOfMatch+1];
+                    }
+                    return strtoupper($arrayImposed[$positionOfMatch+1]);
+                }
+            }
+            else {
+                if($isLowerCase){
+                    return $letter;
+                }
+                return strtoupper($letter);
+            }
+        }
+    }
 }
