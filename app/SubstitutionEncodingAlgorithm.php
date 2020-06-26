@@ -35,8 +35,28 @@ class SubstitutionEncodingAlgorithm implements EncodingAlgorithm
         /**
          * @TODO: Implement it
          */
+        $newArray = array();
+        $stringToArray = str_split($text);
+        $elementToCompare = "";
+        foreach ($this->substitutions as $coupleTab ){
+            $elementToCompare = $elementToCompare.$coupleTab;
+        }
+        $newArrayImposed = str_split($elementToCompare);
+        foreach ( $stringToArray as $letterToChange) {
+            if(!ctype_lower($letterToChange)){
+                array_push($newArray, $this->changeLetter(strtolower($letterToChange),
+                    $newArrayImposed,
+                    ctype_lower($letterToChange)
+                ));
+            }else{
+                array_push($newArray, $this->changeLetter($letterToChange,
+                    $newArrayImposed,
+                    ctype_lower($letterToChange)
+                ));
+            }
+        }
 
-        return '';
+        return implode($newArray);
     }
 
     public function changeLetter($letter, $arrayImposed, $isLowerCase){
