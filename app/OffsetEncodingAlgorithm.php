@@ -58,6 +58,9 @@ class OffsetEncodingAlgorithm implements EncodingAlgorithm
         return $textEncoded;
     }
 
+    /*
+     * transform string into array
+     * */
     public function stringToArray($s)
     {
         $r = array();

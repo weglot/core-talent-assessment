@@ -59,6 +59,9 @@ class SubstitutionEncodingAlgorithm implements EncodingAlgorithm
         return implode($newArray);
     }
 
+    /*
+     * Change letter depending on encoder rule
+     * */
     public function changeLetter($letter, $arrayImposed, $isLowerCase){
         for ($i = 0; $i < count($arrayImposed); $i++) {
             if (in_array($letter, $arrayImposed)) {
