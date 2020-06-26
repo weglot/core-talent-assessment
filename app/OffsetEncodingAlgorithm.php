@@ -41,4 +41,12 @@ class OffsetEncodingAlgorithm implements EncodingAlgorithm
 
         return '';
     }
+
+    public function stringToArray($s)
+    {
+        $r = array();
+        for($i=0; $i<strlen($s); $i++)
+            $r[$i] = $s[$i];
+        return $r;
+    }
 }
