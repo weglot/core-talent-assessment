@@ -35,7 +35,7 @@ class OffsetEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
             array(2, 'z', 'B'),
             array(1, 'Z', 'a'),
             array(26, 'abc def.', 'ABC DEF.'),
-            array(26, 'ABC DEF.', 'abc def.'),
+            array(78, 'ABC DEF.', 'abc def.'),
         );
     }
 }
