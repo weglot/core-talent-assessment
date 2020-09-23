@@ -2,6 +2,10 @@
 
 namespace Base;
 
+use Prophecy\Prophecy\ObjectProphecy;
+use Prophecy\Prophecy\ProphecySubjectInterface;
+use Prophecy\Prophet;
+
 /**
  * Class CompositeEncodingAlgorithmTest
  * @package verify_pack
@@ -9,22 +13,24 @@ namespace Base;
 class CompositeEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Prophecy\Prophet
+     * @var Prophet
      */
     private $prophet;
 
-    protected function setup()
+    protected function setup(): void
     {
-        $this->prophet = new \Prophecy\Prophet;
+        $this->prophet = new Prophet();
     }
 
-    public function testComposedAlgorithmsAreCalled()
+    public function testComposedAlgorithmsAreCalled(): void
     {
-        $algorithmA = $this->prophet->prophesize('\EncodingAlgorithm');
-        $algorithmB = $this->prophet->prophesize('\EncodingAlgorithm');
+        /** @var \EncodingAlgorithm $algorithmA */
+        $algorithmA = $this->prophet->prophesize(\EncodingAlgorithm::class);
+        /** @var \EncodingAlgorithm $algorithmB */
+        $algorithmB = $this->prophet->prophesize(\EncodingAlgorithm::class);
 
-        $algorithmA->encode("plain text")->willReturn("encoded text");
-        $algorithmB->encode("encoded text")->willReturn("text encoded twice");
+        $algorithmA->encode("plain text")->shouldBeCalledOnce()->willReturn("encoded text");
+        $algorithmB->encode("encoded text")->shouldBeCalledOnce()->willReturn("text encoded twice");
 
         $algorithm = new \CompositeEncodingAlgorithm();
         $algorithm->add($algorithmA->reveal());
@@ -33,7 +39,7 @@ class CompositeEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
         $this->assertSame("text encoded twice", $algorithm->encode("plain text"));
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->prophet->checkPredictions();
     }

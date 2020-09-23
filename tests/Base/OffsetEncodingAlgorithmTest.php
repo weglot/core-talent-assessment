@@ -14,7 +14,7 @@ class OffsetEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
      * @param $text
      * @param $encoded
      */
-    public function testValidEncoding($offset, $text, $encoded)
+    public function testValidEncoding(int $offset, string $text, string $encoded): void
     {
         $algorithm = new \OffsetEncodingAlgorithm($offset);
 
@@ -24,7 +24,7 @@ class OffsetEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    public function getTexts()
+    public function getTexts(): iterable
     {
         return array(
             array(0, '', ''),

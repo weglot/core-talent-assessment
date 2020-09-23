@@ -45,7 +45,7 @@ class CompositeOffsetSubstitutionEncodingAlgorithmTest extends \PHPUnit_Framewor
      * @param $text
      * @param $encoded
      */
-    public function testReverseOrder($offset, $text, $encoded)
+    public function testReverseOrder(int $offset, string $text, string $encoded): void
     {
         $algorithm = new \CompositeEncodingAlgorithm();
 
@@ -58,7 +58,7 @@ class CompositeOffsetSubstitutionEncodingAlgorithmTest extends \PHPUnit_Framewor
     /**
      * @return array
      */
-    public function getReversedTexts()
+    public function getReversedTexts(): iterable
     {
         return array(
             array(0, 'abc', 'gbc'),

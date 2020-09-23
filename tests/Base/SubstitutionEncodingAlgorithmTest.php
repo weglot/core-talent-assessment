@@ -14,7 +14,7 @@ class SubstitutionEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
      * @param $text
      * @param $encoded
      */
-    public function testValidEncoding($substitutions, $text, $encoded)
+    public function testValidEncoding(array $substitutions, string $text, string $encoded): void
     {
         $algorithm = new \SubstitutionEncodingAlgorithm($substitutions);
 
@@ -24,7 +24,7 @@ class SubstitutionEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
     /**
      * @return array
      */
-    public function getTexts()
+    public function getTexts(): iterable
     {
         return array(
             array(array('ab'), 'aabbcc', 'bbaacc'),
