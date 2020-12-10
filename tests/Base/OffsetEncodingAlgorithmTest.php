@@ -2,11 +2,12 @@
 
 namespace Base;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class OffsetEncodingAlgorithmTest
- * @package Base
  */
-class OffsetEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
+class OffsetEncodingAlgorithmTest extends TestCase
 {
     /**
      * @dataProvider getTexts
@@ -26,16 +27,16 @@ class OffsetEncodingAlgorithmTest extends \PHPUnit_Framework_TestCase
      */
     public function getTexts()
     {
-        return array(
-            array(0, '', ''),
-            array(1, '', ''),
-            array(1, 'a', 'b'),
-            array(0, 'abc def.', 'abc def.'),
-            array(1, 'abc def.', 'bcd efg.'),
-            array(2, 'z', 'B'),
-            array(1, 'Z', 'a'),
-            array(26, 'abc def.', 'ABC DEF.'),
-            array(78, 'ABC DEF.', 'abc def.'),
-        );
+        return [
+            [0, '', ''],
+            [1, '', ''],
+            [1, 'a', 'b'],
+            [0, 'abc def.', 'abc def.'],
+            [1, 'abc def.', 'bcd efg.'],
+            [2, 'z', 'B'],
+            [1, 'Z', 'a'],
+            [26, 'abc def.', 'ABC DEF.'],
+            [78, 'ABC DEF.', 'abc def.'],
+        ];
     }
 }

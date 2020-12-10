@@ -1,10 +1,8 @@
 <phpunit bootstrap="tests/bootstrap.php" colors="true" >
     <testsuites>
         <testsuite name="base">
-            <file>tests/Base/CompositeEncodingAlgorithmTest.php</file>
             <file>tests/Base/OffsetEncodingAlgorithmTest.php</file>
-            <file>tests/Base/SubstitutionEncodingAlgorithmTest.php</file>
-            <file>tests/Base/CompositeOffsetSubstitutionEncodingAlgorithmTest.php</file>
+            <file>tests/Base/TranslateTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

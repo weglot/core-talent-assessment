@@ -7,9 +7,9 @@
   <br>
 </h1>
 
-Hello and welcome on Weglot Talent Assessment !
+Hello and welcome on Weglot Talent Assessment!
 
-This PHP test will ask you to implement simple encoding algorithms and tests them with Phpunit.
+This PHP test will ask you to implement a simple encoding algorithm and a translator, then use Phpunit to test your code.
 
 Requirements:
 * Git (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -19,16 +19,14 @@ Requirements:
 
 First, you need to fork this repo and clone it on your computer.
 
-Then, when you are ready to start the test you need to run the following command :
+Then, when you are ready to start the test you need to run the following command:
 ```
 php talent-assessment start
 ```
 
-This will create an ```app/``` directory where you will find class to implement.
+This will create an ```app/``` directory where you will find class to implement. You can only make changes in this directory, any changes outside ```app/``` will not be taken in account. 
 
-We recommend you to implement class in this order : ```CompositeEncodingAlgorithm```, ```OffsetEncodingAlgorithm``` and ```SubstitutionEncodingAlgorithm```.
-
-To run unit tests in order to check your code :
+To run unit tests in order to check your code:
 ```
 php vendor/bin/phpunit
 ```
@@ -40,7 +38,7 @@ php talent-assessment finish
 
 Finally, open a pull-request between our repo and your fork [here](https://github.com/weglot/core-talent-assessment/compare).
 
-1. We will test your code with 4 PHP versions (5.6, 7.0, 7.1, 7.2)
-2. You should not add and commit code, it's managed by the ``talent-assessment`` commands
+1. We will test your code with 4 PHP versions (7.0, 7.1, 7.2)
+2. You should not add and commit code, it's managed by the ``talent-assessment`` command
 
 Good luck !
