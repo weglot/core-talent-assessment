@@ -77,8 +77,8 @@ class TranslateTest extends TestCase
     public function getToTranslate()
     {
         return [
-            ['Hello', 'en', 'fr', ['Salut'], []],
-            ['Hello Thomas', 'en', 'fr', ['Salut Thomas'], []],
+            ['Hello', 'en', 'fr', ['Salut', 'Bonjour'], []],
+            ['Hello Thomas', 'en', 'fr', ['Salut Thomas', 'Bonjour Thomas'], []],
             ['Hello', 'en', 'it', ['Ciao'], []],
             ['<strong class="cl">Hello</strong>', 'en', 'it', ['<strong class="cl">Ciao</strong>'], []],
             ['Hello', 'en', 'it', ['Hello'], [['Hello' => 'Hello']]],
