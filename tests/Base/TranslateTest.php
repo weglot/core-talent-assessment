@@ -50,6 +50,25 @@ class TranslateTest extends TestCase
         $this->assertContains($translated, $expected);
     }
 
+    /**
+     * @dataProvider getToMultiTranslate
+     * @param array $sentences
+     * @param string $sourceLanguage
+     * @param string $targetLanguage
+     * @param array $expected
+     * @param array $glossary
+     */
+    public function testMultiTranslate(array $sentences, string $sourceLanguage, string $targetLanguage, array $expected, array $glossary)
+    {
+        $translated = $this->translate->multiTranslate($sentences, $sourceLanguage, $targetLanguage, $glossary);
+        $this->assertIsArray($translated);
+        $this->assertEquals(count($sentences), count($translated));
+        foreach ($translated as $key => $item) {
+            $this->assertContains($item, $expected[$key]);
+        }
+
+    }
+
     public function testTranslateWithBadParams()
     {
         $this->expectExceptionMessage('This language pair is not supported.');
@@ -83,7 +102,21 @@ class TranslateTest extends TestCase
             ['<strong class="cl">Hello</strong>', 'en', 'it', ['<strong class="cl">Ciao</strong>'], []],
             ['Hello', 'en', 'it', ['Hello'], [['Hello' => 'Hello']]],
             ['Hello Thomas', 'en', 'fr', ['Bonjour Thomas'], [['Hello' => 'Bonjour']]],
-            ['Ceci est mon nom de marque dans une phrase.', 'fr', 'en', ['This is my nom de marque in a sentence.'], [['nom de marque' => 'nom de marque']]]
+            ['Ceci est mon nom de marque dans une phrase.', 'fr', 'en', ['This is my nom de marque in a sentence.'], [['nom de marque' => 'nom de marque']]],
+            ['Ceci est mon nom de marque dans une phrase.', 'fr', 'en', ['This is my nom de marque in a sentence.'], [['nom de marque' => 'nom de marque'], ['marque' => 'marque']]]
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getToMultiTranslate()
+    {
+        return [
+            [['Hello', 'Hello'], 'en', 'fr', [['Salut', 'Bonjour'], ['Salut', 'Bonjour']], []],
+            [['Hello', 'Home'], 'en', 'fr', [['Salut', 'Bonjour'], ['Maison']], []],
+            [['Hello Thomas'], 'en', 'fr', [['Bonjour Thomas']], [['Hello' => 'Bonjour']]],
+            [['Ceci est mon nom de marque dans une phrase.'], 'fr', 'en', [['This is my nom de marque in a sentence.']], [['nom de marque' => 'nom de marque']]]
         ];
     }
 }

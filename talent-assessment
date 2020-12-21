@@ -23,9 +23,9 @@ if ($argv[1] === 'start') {
         $date = new \DateTime();
         $date = $date->format('Y/m/d H:i:s');
         exec("echo $date > info.md");
-//        exec('git add info.md');
-//        exec('git commit -m "Started talent assessment"');
-//        exec("git push origin master");
+        exec('git add info.md');
+        exec('git commit -m "Started talent assessment"');
+        exec("git push origin master");
 
         print_r("\nGood luck!\n\n");
     } else {
