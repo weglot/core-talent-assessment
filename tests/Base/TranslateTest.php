@@ -62,7 +62,7 @@ class TranslateTest extends TestCase
     {
         $translated = $this->translate->multiTranslate($sentences, $sourceLanguage, $targetLanguage, $glossary);
         $this->assertIsArray($translated);
-        $this->assertEquals(count($sentences), count($translated));
+        $this->assertSameSize($sentences, $translated);
         foreach ($translated as $key => $item) {
             $this->assertContains($item, $expected[$key]);
         }

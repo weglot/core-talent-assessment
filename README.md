@@ -38,7 +38,7 @@ php talent-assessment finish
 
 Finally, open a pull-request between our repo and your fork [here](https://github.com/weglot/core-talent-assessment/compare).
 
-1. We will test your code with 4 PHP versions (7.0, 7.1, 7.2)
+1. We will test your code with PHP 7.3 version.
 2. You should not add and commit code, it's managed by the ``talent-assessment`` command
 
 Good luck !
