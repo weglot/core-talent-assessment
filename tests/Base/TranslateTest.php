@@ -114,7 +114,7 @@ class TranslateTest extends TestCase
     {
         return [
             [['Hello', 'Hello'], 'en', 'fr', [['Salut', 'Bonjour'], ['Salut', 'Bonjour']], []],
-            [['Hello', 'Home'], 'en', 'fr', [['Salut', 'Bonjour'], ['Maison']], []],
+            [['Hello', 'Home'], 'en', 'fr', [['Salut', 'Bonjour'], ['Maison', 'Accueil']], []],
             [['Hello Thomas'], 'en', 'fr', [['Bonjour Thomas']], [['Hello' => 'Bonjour']]],
             [['Ceci est mon nom de marque dans une phrase.'], 'fr', 'en', [['This is my nom de marque in a sentence.']], [['nom de marque' => 'nom de marque']]]
         ];

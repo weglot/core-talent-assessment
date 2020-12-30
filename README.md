@@ -16,6 +16,10 @@ Requirements:
 * PHP >= 5.3 (https://www.php.net/manual/en/install.php)
 * PHP Zip (https://www.php.net/manual/zip.installation.php)
 
+1. We will test your code with PHP 7.3 version.
+2. You should not add and commit code, it's managed by the ``talent-assessment`` command
+3. Really YOU SHOULD NOT change anything outside the app directory.
+
 
 First, you need to fork this repo and clone it on your computer.
 
@@ -37,8 +41,5 @@ php talent-assessment finish
 ```
 
 Finally, open a pull-request between our repo and your fork [here](https://github.com/weglot/core-talent-assessment/compare).
-
-1. We will test your code with PHP 7.3 version.
-2. You should not add and commit code, it's managed by the ``talent-assessment`` command
 
 Good luck !
