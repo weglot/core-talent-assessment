@@ -3,5 +3,5 @@
 .idea
 .id_rsa
 composer.lock
-/app
+#/app
 /vendor
